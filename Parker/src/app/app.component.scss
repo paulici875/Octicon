@@ -1,0 +1,24 @@
+:host {
+  .header {
+    width: 100%;
+    display: flex;
+    background-color: #4A88C5;
+    text-align: center;
+    box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2), 0 -9px 16px 0 rgba(0, 0, 0, 0.19);
+    top: 0;
+    left: 0;
+    z-index: 999;
+    min-height: 60px;
+    position: fixed;
+  }
+
+  .header-logo {
+    margin: 0 auto;
+  }
+
+  .panel {
+    height: calc(100% - 75px);
+    padding-top: 75px;
+    background-color: #21302f;
+  }
+}
