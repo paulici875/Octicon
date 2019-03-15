@@ -11,6 +11,7 @@ import { CardComponent } from './components/card/card.component';
 import { DashboardService } from './containers/dashboard/dashboard.service';
 import { ButtonComponent } from './components/UI/Button/button.component';
 import { ModalComponent } from './components/UI/Modal/modal.component';
+import { BackdropComponent } from './components/UI/Backdrop/backdrop.component';
 
 const appRoutes: Routes = [
   { path: '', component: LoginComponent },
@@ -24,7 +25,8 @@ const appRoutes: Routes = [
     DashboardComponent,
     CardComponent,
     ButtonComponent,
-    ModalComponent
+    ModalComponent,
+    BackdropComponent
   ],
   imports: [
     BrowserModule,
