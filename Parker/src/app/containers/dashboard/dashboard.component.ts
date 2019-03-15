@@ -1,5 +1,5 @@
 import { Component, OnInit, Output } from '@angular/core';
-import { DashboardService } from './dashboard.service';
+import { DashboardService } from '../../services/dashboard.service';
 import { EventEmitter } from 'protractor';
 
 @Component({
