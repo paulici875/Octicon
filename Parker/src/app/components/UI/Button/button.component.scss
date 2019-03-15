@@ -1,0 +1,57 @@
+:host{
+  width: 100%;
+  .button-container{
+    display: flex;
+    width: 100%;
+    height: 40px;
+  
+    .icon{
+        padding: 5px;
+        width: 15%;
+        background-color: #FEFEFE;
+        border-top-left-radius: 7px;
+        border-bottom-left-radius: 7px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+  
+        img{
+            width: 25px;
+            height: 25px;
+        }
+  
+    }
+    
+    .icon:after{
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 0;
+      left: 40px;
+      border-top: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+      border-left: 5px solid #FEFEFE;
+    }
+    
+    button{
+        border: none;
+        outline: none;
+        width: 85%;
+        background-color: #5AC2B1;
+        border-top-right-radius: 7px;
+        border-bottom-right-radius: 7px;
+        font-family: 'Segoe UI';
+        font-weight: 100;
+        text-align: center;
+        color: #FEFEFE;
+        font-size: 20px;
+    }
+  }
+  
+  .button-container:hover{
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+    border-radius: 7px;
+  }
+}
+

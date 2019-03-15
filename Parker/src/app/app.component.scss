@@ -1,7 +1,9 @@
+*{
+  font-family: "Segoe UI";
+}
+
 :host {
-  *{
-    font-family: "Segoe UI";
-  }
+  
   .header {
     width: 100%;
     display: flex;
@@ -17,11 +19,13 @@
 
   .header-logo {
     margin: 0 auto;
+    padding-top: 9px;
+    width: 219px;
+    height: 74px;
   }
 
   .panel {
     height: calc(100% - 75px);
     padding-top: 75px;
-    background-color: #21302f;
   }
 }

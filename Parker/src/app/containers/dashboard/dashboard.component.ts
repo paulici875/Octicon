@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
+import { DashboardService } from './dashboard.service';
+import { EventEmitter } from 'protractor';
 
 @Component({
   selector: 'dashboard',
@@ -6,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+  public parkings = [];
+  public showModal = false;
 
-  constructor() { }
+  constructor(private dashboardService: DashboardService) { }
 
   ngOnInit() {
+    this.dashboardService.getParkings()
+          .subscribe(data => this.parkings = data );
   }
 
 }

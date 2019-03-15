@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
- 
+import { Component, Input, HostListener } from '@angular/core';
+
 @Component({
   selector: 'card',
   templateUrl: './card.component.html',
@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 
 export class CardComponent {
+  @Input() address: string;
+  @Input() emptySpotsCount: number;
 }
