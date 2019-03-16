@@ -1,5 +1,5 @@
 <div class="centered-form">
-  <form>
+  <form [formGroup]="loginForm">
     <div>
       <img src="../../../../assets/images/test.PNG" />
     </div>
@@ -8,26 +8,21 @@
         <i class="fa fa-envelope" aria-hidden="true"></i>
         <label>Email</label>
       </div>
-      <input type="text" />
+      <input type="text" name="email" formControlName="email"/>
     </div>
     <div class="form-item">
       <div class="form-item-label">
         <i class="fa fa-lock" aria-hidden="true"></i>
         <label>Password</label>
       </div>
-      <input type="password" />
+      <input type="password" name="password" formControlName="password"/>
     </div>
     <div class="form-item-login">
-      <a>
-        <div>
-        <span>
-          <div></div>
-        </span>
-        </div>
+      <a (click)="onSubmit()">
         <div class="form-item-button">
             <span>Login</span>
           </div>
-      </a>
+        </a>
     </div>
   </form>
 </div>
