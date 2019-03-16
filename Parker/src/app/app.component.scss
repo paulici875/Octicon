@@ -1,4 +1,9 @@
+*{
+  font-family: "Segoe UI";
+}
+
 :host {
+
   .header {
     width: 100%;
     height: 65px;
@@ -24,6 +29,5 @@
   .panel {
     height: calc(100% - 75px);
     padding-top: 75px;
-    background-color: #21302f;
   }
 }

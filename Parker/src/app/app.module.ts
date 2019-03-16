@@ -13,11 +13,26 @@ import { AppRoutingModule } from './app-routing.module';
 // Components
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login-panel/login.component';
+import { DashboardComponent } from './containers/dashboard/dashboard.component';
+import { CardComponent } from './components/card/card.component';
+import { DashboardService } from './containers/dashboard/dashboard.service';
+import { ButtonComponent } from './components/UI/Button/button.component';
+import { ModalComponent } from './components/UI/Modal/modal.component';
 
-const appRoutes: Routes = [{ path: '', component: LoginComponent }];
+const appRoutes: Routes = [
+  { path: '', component: LoginComponent },
+  { path: 'dashboard', component: DashboardComponent}
+];
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    DashboardComponent,
+    CardComponent,
+    ButtonComponent,
+    ModalComponent
+  ],
   imports: [
     BrowserModule,
     HttpClientModule,
@@ -26,7 +41,7 @@ const appRoutes: Routes = [{ path: '', component: LoginComponent }];
     AppRoutingModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [UserService, HttpService],
+  providers: [UserService, HttpService, DashboardService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
