@@ -7,7 +7,8 @@ import { Subject } from 'rxjs';
 import { UserService } from './user.service';
 
 // Models
-import { User } from './../models & enums/user.model';
+import { User } from '../models/user.model';
+
 
 @Injectable()
 export class AuthGuard implements CanActivate {
