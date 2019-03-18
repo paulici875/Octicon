@@ -1,4 +1,5 @@
 // Services
+import { AuthGuard } from './user/services/auth.guard';
 import { HttpService } from './shared/services/http.service';
 import { UserService } from './user/services/user.service';
 
@@ -19,10 +20,17 @@ import { DashboardService } from './containers/dashboard/dashboard.service';
 import { ButtonComponent } from './components/UI/Button/button.component';
 import { ModalComponent } from './components/UI/Modal/modal.component';
 
-const appRoutes: Routes = [
-  { path: '', component: LoginComponent },
-  { path: 'dashboard', component: DashboardComponent}
-];
+const appRoutes: Routes = [{
+    path: '',
+    component: DashboardComponent,
+    canActivate: [AuthGuard],
+  }, {
+    path: 'login',
+    component: LoginComponent
+  }, {
+    path: '**',
+    redirectTo: ''
+  }];
 
 @NgModule({
   declarations: [
@@ -41,7 +49,7 @@ const appRoutes: Routes = [
     AppRoutingModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [UserService, HttpService, DashboardService],
+  providers: [UserService, HttpService, DashboardService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

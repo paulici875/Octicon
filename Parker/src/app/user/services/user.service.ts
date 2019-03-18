@@ -11,10 +11,10 @@ import { User } from '../models & enums/user.model';
 
 @Injectable()
 export class UserService {
-  private httpService: HttpService;
   private router: Router;
+  private httpService: HttpService;
 
-  public currentUser: User;
+  private currentUser: User;
 
 
   constructor(httpService: HttpService, router: Router) {
@@ -48,5 +48,13 @@ export class UserService {
 
   public getCurrentUserType(): string {
     return this.currentUser.type;
+  }
+
+  public getUser(): User {
+    return this.currentUser;
+  }
+
+  public setUser(user: User): void {
+    this.currentUser = user;
   }
 }

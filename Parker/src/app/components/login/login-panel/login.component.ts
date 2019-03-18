@@ -46,10 +46,15 @@ export class LoginComponent implements OnInit {
       .login(this.newUser)
       .subscribe((data: BackEndUser) => {
         if (data) {
-          localStorage.setItem('userToken', data.uniqueToken)
-          this.userService.setCurrentUserType(data.userType);
+          if (data.uniqueToken != null) {
+            localStorage.setItem('userToken', data.uniqueToken)
+            this.userService.setCurrentUserType(data.userType);
+            this.router.navigate(['']);
+          } else {
+            console.log('There is no such user');
+          }
         } else {
-          console.log('There is no such user');
+          console.log('Error');
         }
       });
   }
