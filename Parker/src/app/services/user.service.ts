@@ -1,13 +1,13 @@
-import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
-import { map, share } from 'rxjs/operators';
+import { Injectable } from "@angular/core";
+import { Router } from "@angular/router";
+import { Observable, Subscription } from "rxjs";
+import { map, share } from "rxjs/operators";
 
 // Services
-import { HttpService } from './../../shared/services/http.service';
+import { HttpService } from "../shared/services/http.service";
 
 // Models
-import { User } from '../models & enums/user.model';
+import { User } from "../models/user.model";
 
 @Injectable()
 export class UserService {
@@ -15,7 +15,6 @@ export class UserService {
   private httpService: HttpService;
 
   private currentUser: User;
-
 
   constructor(httpService: HttpService, router: Router) {
     this.httpService = httpService;
@@ -26,8 +25,9 @@ export class UserService {
    * Request login
    */
   public login(user: User): Observable<any> {
-    const observable: Observable<any> = this.httpService.post('/login', user).pipe(share());
-    const subscription: Subscription = observable.subscribe((userRecived: User) => {
+    const observable: Observable<any> = this.httpService.post("/login", user).pipe(share());
+    const subscription: Subscription = observable.subscribe(
+      (userRecived: User) => {
         if (user) {
           this.currentUser = user;
         }
