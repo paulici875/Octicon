@@ -1,19 +1,19 @@
-import { Component, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
-import { Subscription } from "rxjs";
-import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 // Services
-import { UserService } from "../../services/user.service";
+import { UserService } from 'src/app/services/user.service';
 
 // Models
-import { BackEndUser } from "./../../models/backEndUser.model";
-import { User } from "./../../models/user.model";
+import { User } from 'src/app/models/user.model';
+import { BackEndUser } from 'src/app/models/backEndUser.model';
 
 @Component({
-  selector: "login",
-  templateUrl: "./login.component.html",
-  styleUrls: ["./login.component.scss"]
+  selector: 'login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
   private router: Router;
@@ -35,20 +35,27 @@ export class LoginComponent implements OnInit {
   ngOnInit() {}
 
   public onSubmit(): void {
-    this.newUser.email = this.loginForm.get(["email"]).value;
-    this.newUser.password = this.loginForm.get(["password"]).value;
+    this.newUser.email = this.loginForm.get(['email']).value;
+    this.newUser.password = this.loginForm.get(['password']).value;
 
     this.login();
   }
 
   private login(): void {
-    this.validateSubscription = this.userService.login(this.newUser).subscribe((data: BackEndUser) => {
-      if (data) {
-        localStorage.setItem("userToken", data.uniqueToken);
-        this.userService.setCurrentUserType(data.userType);
-      } else {
-        console.log("There is no such user");
-      }
-    });
+    this.validateSubscription = this.userService
+      .login(this.newUser)
+      .subscribe((data: BackEndUser) => {
+        if (data) {
+          if (data.uniqueToken != null) {
+            localStorage.setItem('userToken', data.uniqueToken)
+            this.userService.setCurrentUserType(data.userType);
+            this.router.navigate(['']);
+          } else {
+            console.log('There is no such user');
+          }
+        } else {
+          console.log('Error');
+        }
+      });
   }
 }
