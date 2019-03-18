@@ -1,7 +1,9 @@
 // Services
-import { AuthGuard } from './user/services/auth.guard';
+import { AuthGuard } from './services/auth.guard';
+import { UserService } from './services/user.service';
 import { HttpService } from './shared/services/http.service';
-import { UserService } from './user/services/user.service';
+import { DashboardService } from './services/dashboard.service';
+
 
 // Modules
 import { BrowserModule } from '@angular/platform-browser';
@@ -13,12 +15,12 @@ import { AppRoutingModule } from './app-routing.module';
 
 // Components
 import { AppComponent } from './app.component';
-import { LoginComponent } from './components/login/login-panel/login.component';
 import { DashboardComponent } from './containers/dashboard/dashboard.component';
 import { CardComponent } from './components/card/card.component';
-import { DashboardService } from './containers/dashboard/dashboard.service';
-import { ButtonComponent } from './components/UI/Button/button.component';
-import { ModalComponent } from './components/UI/Modal/modal.component';
+import { LoginComponent } from './components/login/login.component';
+import { ButtonComponent } from './components/button/button.component';
+import { ModalComponent } from './components/modal/modal.component';
+
 
 const appRoutes: Routes = [{
     path: '',
