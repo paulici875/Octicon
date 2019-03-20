@@ -8,7 +8,7 @@ export class DashboardService {
   constructor(private http: HttpClient) {}
 
   getParkings(): Observable<Parking[]> {
-    return this.http.get<Parking[]>('http://localhost:57628/parking/all');
+    return this.http.get<Parking[]>('http://localhost:57629/parking/all');
   }
 
 }
