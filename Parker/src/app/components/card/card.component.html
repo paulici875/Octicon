@@ -6,6 +6,15 @@
         {{ emptySpotsCount }}
     </div>
     <div class="card-footer">
-       <buttoncmp image="../assets/icons/parking-lot-icon.png" text="Rezervă"></buttoncmp>
+       <buttoncmp
+       image="../assets/icons/parking-lot-icon.png"
+       text="Rezervă"
+       *ngIf = "currentUserType == typeU.CLIENT"
+       ></buttoncmp>
+       <buttoncmp
+       image="../assets/icons/parking-lot-icon.png"
+       text="Detalii"
+       *ngIf = "currentUserType == typeU.ADMIN"
+       ></buttoncmp>
     </div>
 </div>
