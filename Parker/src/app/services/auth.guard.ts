@@ -22,24 +22,18 @@ export class AuthGuard implements CanActivate {
   }
 
   canActivate() {
-    console.log('CAN ACTIVATE');
-    this.user = this.userService.getUser();
-    if (!localStorage.getItem('userToken')) {
-      console.log('AICICIC');
-      this.router.navigate(['login']);
-      return false;
-    }
-    return true;
-    // if (this.user === undefined) {
-    //   if (localStorage.getItem('userToken') === undefined) {
-    //     this.router.navigate(['/login']);
-    //     return false;
-    //   } else {
-    //     return true;
-    //   }
-    // } else {
-    //     this.router.navigate(['dashboard']);
-    //     return true;
-    // }
+  //   console.log('CAN ACTIVATE');
+  //   this.user = this.userService.getUser();
+  //   if (this.user === undefined) {
+  //     if (localStorage.getItem('userToken') === undefined) {
+  //       this.router.navigate(['/login']);
+  //       return false;
+  //     } else {
+  //       return true;
+  //     }
+  //   } else {
+  //       this.router.navigate(['dashboard']);
+  //       return true;
+  return true;
   }
 }
