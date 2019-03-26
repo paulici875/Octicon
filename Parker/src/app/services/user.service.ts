@@ -1,3 +1,5 @@
+import { LocalStorageService } from './local-storage.service';
+import { BackEndUser } from './../models/backEndUser.model';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
@@ -13,12 +15,14 @@ import { User } from '../models/user.model';
 export class UserService {
   private router: Router;
   private httpService: HttpService;
+  private localStorageService: LocalStorageService;
 
-  private currentUser: User;
+  private currentUser: User = new User();
 
-  constructor(httpService: HttpService, router: Router) {
+  constructor(httpService: HttpService, router: Router , localStorageService: LocalStorageService) {
     this.httpService = httpService;
     this.router = router;
+    this.localStorageService = localStorageService;
   }
 
   /**
@@ -29,9 +33,17 @@ export class UserService {
       .post('/login', user)
       .pipe(share());
     const subscription: Subscription = observable.subscribe(
-      (userRecived: User) => {
-        if (user) {
-          this.currentUser = user;
+      (userRecived: BackEndUser) => {
+        if (userRecived) {
+          const id = userRecived.userId;
+
+          this.getUserProfile(userRecived.userId).subscribe((finalUser: User) => {
+            this.currentUser = finalUser;
+            this.currentUser.id = String(id);
+            console.log(this.currentUser);
+            this.localStorageService.setLocalStorageId(this.currentUser.id);
+          });
+
         }
         setTimeout(() => {
           subscription.unsubscribe();
@@ -42,6 +54,11 @@ export class UserService {
       }
     );
     return observable;
+  }
+
+
+  public getUserProfile(userId): Observable<any> {
+    return this.httpService.get(`/user/profile/${userId}`).pipe(share());
   }
 
   public setCurrentUserType(type: string): void {

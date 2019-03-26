@@ -1,5 +1,5 @@
 export class User {
-  public id: number;
+  public id: string;
   public type: string;
   public lastName: string;
   public firstName: string;
@@ -9,7 +9,7 @@ export class User {
   public avatar: string;
 
   constructor(
-    id?: number,
+    id?: string,
     type?: string,
     lastName?: string,
     firstName?: string,
@@ -26,6 +26,5 @@ export class User {
     this.phone = phone || this.phone;
     this.password = password || this.password;
     this.avatar = avatar || this.avatar;
-
   }
 }
