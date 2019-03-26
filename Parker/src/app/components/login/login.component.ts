@@ -32,7 +32,11 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    if (localStorage.getItem('id') !== null) {
+      this.router.navigate(['']);
+    }
+  }
 
   public onSubmit(): void {
     this.newUser.email = this.loginForm.get(['email']).value;

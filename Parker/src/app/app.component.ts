@@ -1,6 +1,8 @@
-import { UserService } from './services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
+import { UserService } from './services/user.service';
+import { LocalStorageService } from './services/local-storage.service';
 
 @Component({
   selector: 'app-root',
@@ -10,12 +12,15 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit {
   private router: Router;
   private userService: UserService;
+  private localStorageService: LocalStorageService;
 
   public token = false;
 
-  constructor(router: Router, userService: UserService) {
+  constructor(router: Router, userService: UserService, localStorageService: LocalStorageService) {
     this.router = router;
     this.userService = userService;
+    this.localStorageService = localStorageService;
+
   }
 
   ngOnInit(): void {
@@ -23,12 +28,10 @@ export class AppComponent implements OnInit {
   }
 
   public logOut() {
-    this.userService.getUserProfile().subscribe(( data) => {
-      console.log('USER PROFILE:', data);
-      this.userService.logOut().subscribe(() => {
-        this.router.navigate(['login']);
-      });
-    });
+      this.localStorageService.clearStorage();
+      this.router.navigate(['login']);
+
+
 
   }
 }

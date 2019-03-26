@@ -1,4 +1,4 @@
 export class BackEndUser {
   public userType: string;
-  public userId: string;
+  public userId: number;
 }

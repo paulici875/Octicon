@@ -1,3 +1,4 @@
+import { LocalStorageService } from './local-storage.service';
 import { BackEndUser } from './../models/backEndUser.model';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
@@ -14,12 +15,14 @@ import { User } from '../models/user.model';
 export class UserService {
   private router: Router;
   private httpService: HttpService;
+  private localStorageService: LocalStorageService;
 
   private currentUser: User = new User();
 
-  constructor(httpService: HttpService, router: Router) {
+  constructor(httpService: HttpService, router: Router , localStorageService: LocalStorageService) {
     this.httpService = httpService;
     this.router = router;
+    this.localStorageService = localStorageService;
   }
 
   /**
@@ -32,9 +35,15 @@ export class UserService {
     const subscription: Subscription = observable.subscribe(
       (userRecived: BackEndUser) => {
         if (userRecived) {
-          console.log('User Type:', userRecived);
-          this.currentUser.type = userRecived.userType;
-          this.currentUser.id = userRecived.userId;
+          const id = userRecived.userId;
+
+          this.getUserProfile(userRecived.userId).subscribe((finalUser: User) => {
+            this.currentUser = finalUser;
+            this.currentUser.id = String(id);
+            console.log(this.currentUser);
+            this.localStorageService.setLocalStorageId(this.currentUser.id);
+          });
+
         }
         setTimeout(() => {
           subscription.unsubscribe();
@@ -47,15 +56,9 @@ export class UserService {
     return observable;
   }
 
-  public logOut(): Observable<any> {
-    const observable: Observable<any> = this.httpService
-      .post('/logout')
-      .pipe(share());
-    return observable;
-  }
 
-  public getUserProfile(): Observable<any> {
-    return this.httpService.get('/user/profile').pipe(share());
+  public getUserProfile(userId): Observable<any> {
+    return this.httpService.get(`/user/profile/${userId}`).pipe(share());
   }
 
   public setCurrentUserType(type: string): void {

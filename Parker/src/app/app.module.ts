@@ -1,7 +1,7 @@
 // Services
-import { AuthGuard } from './services/auth.guard';
 import { UserService } from './services/user.service';
 import { HttpService } from './shared/services/http.service';
+import { LocalStorageService } from './services/local-storage.service';
 import { DashboardService } from './services/dashboard.service';
 
 // Modules
@@ -21,6 +21,9 @@ import { ButtonComponent } from './components/button/button.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { BackdropComponent } from './components/UI/Backdrop/backdrop.component';
 
+// Guards
+import { AuthGuard } from './services/auth.guard';
+
 const appRoutes: Routes = [
   {
     path: '',
@@ -29,7 +32,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
   },
   {
     path: '**',
@@ -55,7 +58,7 @@ const appRoutes: Routes = [
     AppRoutingModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [UserService, HttpService, DashboardService, AuthGuard],
+  providers: [UserService, HttpService, DashboardService, AuthGuard, LocalStorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
