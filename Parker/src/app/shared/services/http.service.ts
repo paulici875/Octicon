@@ -21,7 +21,7 @@ export class HttpService {
     }
   }
 
-  public post(url: string, data: any, params?: any): Observable<any> {
+  public post(url: string, data?: any, params?: any): Observable<any> {
     return this.httpClient.post(`${baseUrl}${url}`, data, {
       params,
       headers: {
