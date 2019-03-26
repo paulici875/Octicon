@@ -1,4 +1,5 @@
 :host{
+  font-family: 'Segoe UI';
   width: 100%;
   height: 100%;
   display: flex;
@@ -13,6 +14,77 @@
     padding: 25px;
     .edit-container{
       width: 70%;
+      padding: 5px;
+      padding-left: 20px;
+      .form-title{
+        width: 100%;
+        display: flex;
+        padding: 10px;
+        box-sizing: border-box;
+        border-bottom: 1px solid #D7DBDD;
+        & > span{
+          color: #747474;
+          font-weight: 600;
+          font-size: 25px;
+          width: 60%;
+        }
+        & > div{
+          width: 40%;
+          text-align: right;
+        }
+
+        .button{
+          border-radius: 8px;
+          outline: none;
+          text-decoration: none;
+          border: none;
+          padding: 5px;
+          margin-left: 10px;
+          width: 70px;
+          text-align: center;
+        }
+        .button:hover{
+          box-shadow: 0 2px 3px #747474;
+        }
+        .save-button{
+          color: #FEFEFE;
+          background-color: #4A88C5;
+        }
+        .cancel-button{
+          color: #747474;
+          border: 1px solid #4A88C5;
+          background-color: transparent;
+        }
+
+      }
+      .form-body{
+        padding: 10px;
+        width: 100%;
+        .form-input{
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          margin: 10px;
+          box-sizing: border-box;
+          & > span{
+            color: #747474;
+            font-weight: 100;
+            font-size: 20px;
+          }
+          & > input{
+            border: 1px solid #DDDADA;
+            border-radius: 8px;
+            padding: 5px;
+            text-align: center;
+            outline: none;
+            font-size: 17px;
+          }
+        }
+        .name-details{
+          display: flex;
+          width: 100%;
+        }
+      }
     }
     .view-container{
       width: 30%;

@@ -2,7 +2,7 @@
   <div class="view-container">
     <h3>Profil</h3>
     <div class="image-container">
-      <img src="../../../assets/images/edit-user-icon.png" alt="User"/>
+      <img src="../../../assets/images/edit-user-icon.png" alt="User" />
     </div>
     <div class="user-details-container">
       <span>Nume Prenume</span>
@@ -15,35 +15,61 @@
       </div>
       <div class="vertical-line"></div>
       <div>
-          <span>1</span>
-          <span>rezervare activa</span>
+        <span>1</span>
+        <span>rezervare activa</span>
       </div>
     </div>
   </div>
   <div class="edit-container">
-    <div>
-      <form>
-        <div>
-          Informatii de baza
-          <div>
-              <button>Cancel</button>
-              <button type="submit">Salveaza</button>
+    <form>
+      <div class="form-title">
+        <span>Informații de bază</span>
+        <div class="form-buttons">
+          <button class="cancel-button button">Anulează</button>
+          <button type="submit" class="save-button button">Salvează</button>
+        </div>
+      </div>
+      <div class="form-body">
+        <div class="name-details">
+          <div class="form-input" style="width: 50%">
+            <span>Nume</span>
+            <input type="text" name="name" placeholder="Nume" />
+          </div>
+          <div class="form-input" style="width: 50%">
+            <span>Prenume</span>
+            <input type="text" name="name" placeholder="Prenume" />
+          </div>
+        </div>
+        <div class="form-input">
+          <span>Email</span>
+          <input type="email" name="email" placeholder="email@email.com" />
+        </div>
+        <div class="form-input">
+          <span>Telefon</span>
+          <input type="text" name="tel" placeholder="Telefon" />
+        </div>
+      </div>
+    </form>
+    <form>
+        <div class="form-title">
+          <span>Securitate</span>
+          <div class="form-buttons">
+            <button class="cancel-button button">Anulează</button>
+            <button type="submit" class="save-button button">Salvează</button>
           </div>
         </div>
         <div class="form-body">
-          <label>Nume</label>
-          <input type="text" name="name" placeholder="Nume"/>
-          <label>Prenume</label>
-          <input type="text" name="surname" placeholder="Prenume"/>
-          <label>Email</label>
-          <input type="email" name="email" placeholder="email@email.com"/>
-          <label>Telefon</label>
-          <input type="text" name="tel" placeholder="Telefon"/>
+          <div class="name-details">
+            <div class="form-input" style="width: 50%">
+              <span>New password</span>
+              <input type="text" name="name" placeholder="New password" />
+            </div>
+            <div class="form-input" style="width: 50%">
+              <span>Re-type new password</span>
+              <input type="text" name="name" placeholder="Re-type new password" />
+            </div>
+          </div>
         </div>
       </form>
-    </div>
-    <div>
-
-    </div>
   </div>
 </div>
