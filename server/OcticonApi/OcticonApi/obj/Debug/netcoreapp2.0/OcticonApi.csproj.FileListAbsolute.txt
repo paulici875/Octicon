@@ -1,0 +1,53 @@
+D:\Workstation\C#\OcticonApi\OcticonApi\bin\Debug\netcoreapp2.0\OcticonApi.deps.json
+D:\Workstation\C#\OcticonApi\OcticonApi\bin\Debug\netcoreapp2.0\OcticonApi.runtimeconfig.json
+D:\Workstation\C#\OcticonApi\OcticonApi\bin\Debug\netcoreapp2.0\OcticonApi.runtimeconfig.dev.json
+D:\Workstation\C#\OcticonApi\OcticonApi\bin\Debug\netcoreapp2.0\OcticonApi.dll
+D:\Workstation\C#\OcticonApi\OcticonApi\bin\Debug\netcoreapp2.0\OcticonApi.pdb
+D:\Workstation\C#\OcticonApi\OcticonApi\obj\Debug\netcoreapp2.0\OcticonApi.csproj.CoreCompileInputs.cache
+D:\Workstation\C#\OcticonApi\OcticonApi\obj\Debug\netcoreapp2.0\OcticonApi.AssemblyInfoInputs.cache
+D:\Workstation\C#\OcticonApi\OcticonApi\obj\Debug\netcoreapp2.0\OcticonApi.AssemblyInfo.cs
+D:\Workstation\C#\OcticonApi\OcticonApi\obj\Debug\netcoreapp2.0\OcticonApi.dll
+D:\Workstation\C#\OcticonApi\OcticonApi\obj\Debug\netcoreapp2.0\OcticonApi.pdb
+D:\Workstation\C#\OcticonApi\OcticonApi\bin\Debug\netcoreapp2.0\OcticonApi.Core.dll
+D:\Workstation\C#\OcticonApi\OcticonApi\bin\Debug\netcoreapp2.0\OcticonApi.Core.pdb
+D:\Workstation\C#\OcticonApi\OcticonApi\obj\Debug\netcoreapp2.0\OcticonApi.csprojResolveAssemblyReference.cache
+C:\Users\Diana Valentina\Desktop\OcticonApi\OcticonApi\bin\Debug\netcoreapp2.0\OcticonApi.deps.json
+C:\Users\Diana Valentina\Desktop\OcticonApi\OcticonApi\bin\Debug\netcoreapp2.0\OcticonApi.runtimeconfig.json
+C:\Users\Diana Valentina\Desktop\OcticonApi\OcticonApi\bin\Debug\netcoreapp2.0\OcticonApi.runtimeconfig.dev.json
+C:\Users\Diana Valentina\Desktop\OcticonApi\OcticonApi\bin\Debug\netcoreapp2.0\OcticonApi.dll
+C:\Users\Diana Valentina\Desktop\OcticonApi\OcticonApi\bin\Debug\netcoreapp2.0\OcticonApi.pdb
+C:\Users\Diana Valentina\Desktop\OcticonApi\OcticonApi\bin\Debug\netcoreapp2.0\OcticonApi.Core.dll
+C:\Users\Diana Valentina\Desktop\OcticonApi\OcticonApi\bin\Debug\netcoreapp2.0\OcticonApi.Core.pdb
+C:\Users\Diana Valentina\Desktop\OcticonApi\OcticonApi\obj\Debug\netcoreapp2.0\OcticonApi.csprojResolveAssemblyReference.cache
+C:\Users\Diana Valentina\Desktop\OcticonApi\OcticonApi\obj\Debug\netcoreapp2.0\OcticonApi.csproj.CoreCompileInputs.cache
+C:\Users\Diana Valentina\Desktop\OcticonApi\OcticonApi\obj\Debug\netcoreapp2.0\OcticonApi.AssemblyInfoInputs.cache
+C:\Users\Diana Valentina\Desktop\OcticonApi\OcticonApi\obj\Debug\netcoreapp2.0\OcticonApi.AssemblyInfo.cs
+C:\Users\Diana Valentina\Desktop\OcticonApi\OcticonApi\obj\Debug\netcoreapp2.0\OcticonApi.dll
+C:\Users\Diana Valentina\Desktop\OcticonApi\OcticonApi\obj\Debug\netcoreapp2.0\OcticonApi.pdb
+D:\Workstation\C#\Octicon Back-end\OcticonApi\OcticonApi\obj\Debug\netcoreapp2.0\OcticonApi.csprojResolveAssemblyReference.cache
+D:\Workstation\C#\Octicon Back-end\OcticonApi\OcticonApi\obj\Debug\netcoreapp2.0\OcticonApi.csproj.CoreCompileInputs.cache
+D:\Workstation\C#\Octicon Back-end\OcticonApi\OcticonApi\obj\Debug\netcoreapp2.0\OcticonApi.AssemblyInfoInputs.cache
+D:\Workstation\C#\Octicon Back-end\OcticonApi\OcticonApi\obj\Debug\netcoreapp2.0\OcticonApi.AssemblyInfo.cs
+D:\Workstation\C#\Octicon Back-end\OcticonApi\OcticonApi\obj\Debug\netcoreapp2.0\OcticonApi.dll
+D:\Workstation\C#\Octicon Back-end\OcticonApi\OcticonApi\obj\Debug\netcoreapp2.0\OcticonApi.pdb
+D:\Workstation\C#\Octicon Back-end\OcticonApi\OcticonApi\bin\Debug\netcoreapp2.0\OcticonApi.deps.json
+D:\Workstation\C#\Octicon Back-end\OcticonApi\OcticonApi\bin\Debug\netcoreapp2.0\OcticonApi.runtimeconfig.json
+D:\Workstation\C#\Octicon Back-end\OcticonApi\OcticonApi\bin\Debug\netcoreapp2.0\OcticonApi.runtimeconfig.dev.json
+D:\Workstation\C#\Octicon Back-end\OcticonApi\OcticonApi\bin\Debug\netcoreapp2.0\OcticonApi.dll
+D:\Workstation\C#\Octicon Back-end\OcticonApi\OcticonApi\bin\Debug\netcoreapp2.0\OcticonApi.pdb
+D:\Workstation\C#\Octicon Back-end\OcticonApi\OcticonApi\bin\Debug\netcoreapp2.0\OcticonApi.Core.dll
+D:\Workstation\C#\Octicon Back-end\OcticonApi\OcticonApi\bin\Debug\netcoreapp2.0\OcticonApi.Core.pdb
+D:\Octicon_project\server\(new) OcticonApi (get user profile by user id)\OcticonApi\bin\Debug\netcoreapp2.0\OcticonApi.deps.json
+D:\Octicon_project\server\(new) OcticonApi (get user profile by user id)\OcticonApi\bin\Debug\netcoreapp2.0\OcticonApi.runtimeconfig.json
+D:\Octicon_project\server\(new) OcticonApi (get user profile by user id)\OcticonApi\bin\Debug\netcoreapp2.0\OcticonApi.runtimeconfig.dev.json
+D:\Octicon_project\server\(new) OcticonApi (get user profile by user id)\OcticonApi\bin\Debug\netcoreapp2.0\OcticonApi.dll
+D:\Octicon_project\server\(new) OcticonApi (get user profile by user id)\OcticonApi\bin\Debug\netcoreapp2.0\OcticonApi.pdb
+D:\Octicon_project\server\(new) OcticonApi (get user profile by user id)\OcticonApi\bin\Debug\netcoreapp2.0\OcticonApi.Core.dll
+D:\Octicon_project\server\(new) OcticonApi (get user profile by user id)\OcticonApi\bin\Debug\netcoreapp2.0\OcticonApi.Core.pdb
+D:\Octicon_project\server\(new) OcticonApi (get user profile by user id)\OcticonApi\obj\Debug\netcoreapp2.0\OcticonApi.csprojAssemblyReference.cache
+D:\Octicon_project\server\(new) OcticonApi (get user profile by user id)\OcticonApi\obj\Debug\netcoreapp2.0\OcticonApi.csproj.CoreCompileInputs.cache
+D:\Octicon_project\server\(new) OcticonApi (get user profile by user id)\OcticonApi\obj\Debug\netcoreapp2.0\OcticonApi.AssemblyInfoInputs.cache
+D:\Octicon_project\server\(new) OcticonApi (get user profile by user id)\OcticonApi\obj\Debug\netcoreapp2.0\OcticonApi.AssemblyInfo.cs
+D:\Octicon_project\server\(new) OcticonApi (get user profile by user id)\OcticonApi\obj\Debug\netcoreapp2.0\OcticonApi.csproj.CopyComplete
+D:\Octicon_project\server\(new) OcticonApi (get user profile by user id)\OcticonApi\obj\Debug\netcoreapp2.0\OcticonApi.dll
+D:\Octicon_project\server\(new) OcticonApi (get user profile by user id)\OcticonApi\obj\Debug\netcoreapp2.0\OcticonApi.pdb
