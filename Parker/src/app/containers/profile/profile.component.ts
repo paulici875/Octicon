@@ -1,3 +1,4 @@
+import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { DashboardService } from '../../services/dashboard.service';
 
@@ -7,8 +8,10 @@ import { DashboardService } from '../../services/dashboard.service';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-
-  constructor() {}
+  private userService: UserService;
+  constructor(userSevice: UserService) {
+    this.userService = userSevice;
+  }
 
   ngOnInit() {
   }
