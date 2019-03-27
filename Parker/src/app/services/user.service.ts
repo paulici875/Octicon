@@ -1,5 +1,3 @@
-import { LocalStorageService } from './local-storage.service';
-import { BackEndUser } from './../models/backEndUser.model';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
@@ -15,14 +13,12 @@ import { User } from '../models/user.model';
 export class UserService {
   private router: Router;
   private httpService: HttpService;
-  private localStorageService: LocalStorageService;
 
   private currentUser: User = new User();
 
-  constructor(httpService: HttpService, router: Router , localStorageService: LocalStorageService) {
+  constructor(httpService: HttpService, router: Router ) {
     this.httpService = httpService;
     this.router = router;
-    this.localStorageService = localStorageService;
   }
 
   /**
@@ -32,27 +28,6 @@ export class UserService {
     const observable: Observable<any> = this.httpService
       .post('/login', user)
       .pipe(share());
-    const subscription: Subscription = observable.subscribe(
-      (userRecived: BackEndUser) => {
-        if (userRecived) {
-          const id = userRecived.userId;
-
-          this.getUserProfile(userRecived.userId).subscribe((finalUser: User) => {
-            this.currentUser = finalUser;
-            this.currentUser.id = String(id);
-            console.log(this.currentUser);
-            this.localStorageService.setLocalStorageId(this.currentUser.id);
-          });
-
-        }
-        setTimeout(() => {
-          subscription.unsubscribe();
-        });
-      },
-      () => {
-        subscription.unsubscribe();
-      }
-    );
     return observable;
   }
 
@@ -75,5 +50,9 @@ export class UserService {
 
   public setUser(user: User): void {
     this.currentUser = user;
+  }
+
+  public setUserId(id: string): void {
+    this.currentUser.id = id;
   }
 }
