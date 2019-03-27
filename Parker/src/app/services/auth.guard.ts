@@ -32,9 +32,7 @@ export class AuthGuard implements CanActivate {
   }
 
   canActivate() {
-    console.log('CAN ACTIVATE');
     this.user = this.userService.getUser();
-    console.log('USER', this.user);
     if ( localStorage.getItem('id') === null || localStorage.getItem('id') === undefined) {
       this.router.navigate(['/login']);
       return false;

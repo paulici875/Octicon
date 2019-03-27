@@ -5,17 +5,17 @@
       <img src="../../../assets/images/edit-user-icon.png" alt="User" />
     </div>
     <div class="user-details-container">
-      <span>Nume Prenume</span>
+      <span>{{currentUser?.lastName}} {{currentUser?.firstName}}</span>
       <span>Utilizator</span>
     </div>
     <div class="reservation-details">
       <div>
-        <span>3</span>
+        <span>{{currentUser?.numberOfTotalReservations}}</span>
         <span>rezervari</span>
       </div>
       <div class="vertical-line"></div>
       <div>
-        <span>1</span>
+        <span>{{currentUser?.numberOfActiveReservations}}</span>
         <span>rezervare activa</span>
       </div>
     </div>
@@ -33,20 +33,20 @@
         <div class="name-details">
           <div class="form-input" style="width: 50%">
             <span>Nume</span>
-            <input type="text" name="name" placeholder="Nume" />
+            <input type="text" name="name" placeholder="Nume" [value]="currentUser?.lastName ? currentUser?.lastName : null">
           </div>
           <div class="form-input" style="width: 50%">
             <span>Prenume</span>
-            <input type="text" name="name" placeholder="Prenume" />
+            <input type="text" name="name" placeholder="Prenume" [value]="currentUser?.firstName ? currentUser?.firstName : null" />
           </div>
         </div>
         <div class="form-input">
           <span>Email</span>
-          <input type="email" name="email" placeholder="email@email.com" />
+          <input type="email" name="email" placeholder="email@email.com" [value]="currentUser?.email ? currentUser?.email : null" />
         </div>
         <div class="form-input">
           <span>Telefon</span>
-          <input type="text" name="tel" placeholder="Telefon" />
+          <input type="text" name="tel" placeholder="Telefon" [value]="currentUser?.phone ? currentUser?.phone : null"/>
         </div>
       </div>
     </form>
