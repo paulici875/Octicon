@@ -1,7 +1,15 @@
 <div class="header">
-<img class="header-logo" src="../assets/images/parklabs-logo-white.png">
-<div class="log-out" (click)="logOut()">Log out</div>
+  <img class="header-logo" src="../assets/images/parklabs-logo-white.png" />
+  <div class="header-options" *ngIf="showIcons">
+    <div class="profile-logo">
+      <img src="../../../assets/images/edit-user-icon.png" alt="User" />
+    </div>
+    <div class="vertical-line"></div>
+    <a class="log-out" (click)="logOut()">
+      <img class="log-out-icon" src="../assets/images/log-out-icon.png" />
+    </a>
+  </div>
 </div>
 <div class="panel">
-<router-outlet></router-outlet>
+  <router-outlet></router-outlet>
 </div>

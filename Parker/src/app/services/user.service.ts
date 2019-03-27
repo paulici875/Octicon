@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
+import { Observable, Subscription, BehaviorSubject } from 'rxjs';
 import { map, share } from 'rxjs/operators';
 
 // Services
@@ -13,8 +13,10 @@ import { User } from '../models/user.model';
 export class UserService {
   private router: Router;
   private httpService: HttpService;
-
   private currentUser: User = new User();
+
+  private showHeaderOptionsSubject = new BehaviorSubject<boolean>(false);
+  public showHeaderOptionsObservable = this.showHeaderOptionsSubject.asObservable();
 
   constructor(httpService: HttpService, router: Router ) {
     this.httpService = httpService;
@@ -31,6 +33,9 @@ export class UserService {
     return observable;
   }
 
+  public setMenuState(state: boolean) {
+    this.showHeaderOptionsSubject.next(state);
+  }
 
   public getUserProfile(userId): Observable<any> {
     return this.httpService.get(`/user/profile/${userId}`).pipe(share());
