@@ -20,6 +20,7 @@ import { LoginComponent } from './components/login/login.component';
 import { ButtonComponent } from './components/button/button.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { BackdropComponent } from './components/UI/Backdrop/backdrop.component';
+import { ProfileComponent } from './containers/profile/profile.component';
 
 // Guards
 import { AuthGuard } from './services/auth.guard';
@@ -35,6 +36,10 @@ const appRoutes: Routes = [
     component: LoginComponent,
   },
   {
+    path: 'profile',
+    component: ProfileComponent
+  },
+  {
     path: '**',
     redirectTo: ''
   }
@@ -48,7 +53,8 @@ const appRoutes: Routes = [
     CardComponent,
     ButtonComponent,
     ModalComponent,
-    BackdropComponent
+    BackdropComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
