@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 // Services
+import { LocalStorageService } from './../../services/local-storage.service';
 import { UserService } from 'src/app/services/user.service';
 
 // Models
@@ -19,13 +20,15 @@ export class LoginComponent implements OnInit {
   private router: Router;
   private userService: UserService;
   private validateSubscription: Subscription;
+  private localStorageService: LocalStorageService;
 
   public loginForm: FormGroup;
   public newUser: User = new User();
 
-  constructor(userService: UserService, router: Router) {
+  constructor(userService: UserService, router: Router, localStorageService: LocalStorageService) {
     this.userService = userService;
     this.router = router;
+    this.localStorageService = localStorageService;
     this.loginForm = new FormGroup({
       email: new FormControl(this.newUser.email, [Validators.required]),
       password: new FormControl(this.newUser.password, [Validators.required])
@@ -33,7 +36,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (localStorage.getItem('id') !== null) {
+    if (localStorage.getItem('id')) {
       this.router.navigate(['']);
     }
   }
@@ -48,13 +51,17 @@ export class LoginComponent implements OnInit {
   private login(): void {
     this.validateSubscription = this.userService
       .login(this.newUser)
-      .subscribe((data) => {
-        if (data) {
-            this.userService.setCurrentUserType(data.userType);
+      .subscribe((userRecived: BackEndUser) => {
+        if (userRecived) {
+          const id = String(userRecived.userId);
+          this.userService.getUserProfile(userRecived.userId).subscribe((finalUser: User) => {
+            this.userService.setUser(finalUser);
+            this.userService.setUserId(id);
+            this.localStorageService.setLocalStorageId(id);
             this.router.navigate(['']);
-          } else {
-            console.log('There is no such user');
-          }
+          });
+
+        }
       });
   }
 }
