@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
   private userService: UserService;
   private localStorageService: LocalStorageService;
 
-  public token = false;
+  public showIcons = false;
 
   constructor(router: Router, userService: UserService, localStorageService: LocalStorageService) {
     this.router = router;
@@ -24,11 +24,14 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.userService.showHeaderOptionsObservable.subscribe((state) => {
+      this.showIcons = state;
+    });
   }
 
   public logOut() {
       this.localStorageService.clearStorage();
+      this.userService.setMenuState(false);
       this.router.navigate(['/login']);
   }
 }

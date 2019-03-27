@@ -10,7 +10,7 @@ export class LocalStorageService {
   }
 
   public getLocalStorageId() {
-    localStorage.getItem('id');
+    return localStorage.getItem('id');
   }
 
   public clearStorage() {
