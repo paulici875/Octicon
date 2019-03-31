@@ -8,6 +8,7 @@ import { HttpService } from '../shared/services/http.service';
 
 // Models
 import { User } from '../models/user.model';
+import { Password } from '../models/password.model';
 
 @Injectable()
 export class UserService {
@@ -55,6 +56,14 @@ export class UserService {
 
   public setUser(user: User): void {
     this.currentUser = user;
+  }
+
+  public setPassword(newPass: Password): Observable<any>{
+    newPass.userId = localStorage.getItem('id');
+    const observable: Observable<any> = this.httpService
+      .post('/change-password', newPass)
+      .pipe(share());
+    return observable;
   }
 
   public setUserId(id: string): void {

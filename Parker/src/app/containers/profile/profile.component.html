@@ -16,57 +16,58 @@
       <div class="vertical-line"></div>
       <div>
         <span>{{currentUser?.numberOfActiveReservations}}</span>
-        <span>rezervare activa</span>
+        <span *ngIf="numberOfActiveReservations; else elseBlock">rezervare activa</span>
+        <ng-template #elseBlock>rezervari active</ng-template>
       </div>
     </div>
   </div>
   <div class="edit-container">
-    <form>
+    <form [formGroup]="detailsForm">
       <div class="form-title">
         <span>Informații de bază</span>
         <div class="form-buttons">
-          <button class="cancel-button button">Anulează</button>
-          <button type="submit" class="save-button button">Salvează</button>
+          <button type="cancel" (click)="clearDetailsForm()" class="cancel-button button">Anulează</button>
+          <button type="submit" (click)="onDetailsSubmit()" class="save-button button">Salvează</button>
         </div>
       </div>
       <div class="form-body">
         <div class="name-details">
           <div class="form-input" style="width: 50%">
             <span>Nume</span>
-            <input type="text" name="name" placeholder="Nume" [value]="currentUser?.lastName ? currentUser?.lastName : null">
+            <input type="text" name="lastName"  formControlName="lastName" placeholder="Nume" [value]="currentUser.lastName">
           </div>
           <div class="form-input" style="width: 50%">
             <span>Prenume</span>
-            <input type="text" name="name" placeholder="Prenume" [value]="currentUser?.firstName ? currentUser?.firstName : null" />
+            <input type="text" name="firstName" formControlName="firstName" placeholder="Prenume" [value]="currentUser.firstName" />
           </div>
         </div>
         <div class="form-input">
           <span>Email</span>
-          <input type="email" name="email" placeholder="email@email.com" [value]="currentUser?.email ? currentUser?.email : null" />
+          <input type="email" name="email" formControlName="email" placeholder="email@email.com" [value]="currentUser.email" />
         </div>
         <div class="form-input">
           <span>Telefon</span>
-          <input type="text" name="tel" placeholder="Telefon" [value]="currentUser?.phone ? currentUser?.phone : null"/>
+          <input type="text" name="phone" formControlName="phone" placeholder="Telefon" [value]="currentUser.phone"/>
         </div>
       </div>
     </form>
-    <form>
+    <form [formGroup]="passwordForm">
         <div class="form-title">
           <span>Securitate</span>
           <div class="form-buttons">
-            <button class="cancel-button button">Anulează</button>
-            <button type="submit" class="save-button button">Salvează</button>
+            <button type="cancel" (click)="clearPasswordForm()" class="cancel-button button">Anulează</button>
+            <button type="submit" (click)="onPasswordSubmit()" class="save-button button">Salvează</button>
           </div>
         </div>
         <div class="form-body">
           <div class="name-details">
             <div class="form-input" style="width: 50%">
-              <span>New password</span>
-              <input type="text" name="name" placeholder="New password" />
+              <span>Old password</span>
+              <input type="password" name="oldPassword" formControlName="oldPassword" placeholder="Old password" />
             </div>
             <div class="form-input" style="width: 50%">
-              <span>Re-type new password</span>
-              <input type="text" name="name" placeholder="Re-type new password" />
+              <span>New password</span>
+              <input type="password" name="newPassword" formControlName="newPassword" placeholder="New password" />
             </div>
           </div>
         </div>
