@@ -1,0 +1,17 @@
+.option {
+  background-color: #4a88c5;
+  width: 160px;
+  border-radius: 80px;
+  height: 160px;
+  cursor: pointer;
+}
+
+.wrap-text {
+  word-wrap: break-word;
+  overflow: visible;
+  text-align: center;
+}
+
+.content-option {
+  max-width: 160px;
+}

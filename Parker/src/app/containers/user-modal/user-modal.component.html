@@ -1,0 +1,22 @@
+<h3 class="mat-dialog-title" fxLayout="row">
+  <span style="text-align: center; flex: 1">Alegeti tipul de parcare</span>
+  <div style="cursor: pointer;">
+    <img (click)="onClose()" width="40px" height="40px" src="assets/images/close-icon.png" />
+  </div>
+</h3>
+<div class="mat-dialog-content" fxLayout="column" fxLayoutAlign="center center">
+  <div fxLayout="row" fxLayoutGap="32px">
+    <div class="content-option" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="8px">
+      <div (click)="onSelectOption('normalParking')" class="option" fxLayoutAlign="center center">
+        <img width="110px" height="110px" src="assets/images/normal-parking-icon.png" />
+      </div>
+      <span class="wrap-text">Statie cu regim normal de incarcare</span>
+    </div>
+    <div class="content-option" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="8px">
+      <div (click)="onSelectOption('electricalParking')" class="option" fxLayoutAlign="center center">
+        <img width="110px" height="110px" src="assets/images/electrical-parking-icon.png" />
+      </div>
+      <span class="wrap-text">Statie cu regim normal de incarcare</span>
+    </div>
+  </div>
+</div>
