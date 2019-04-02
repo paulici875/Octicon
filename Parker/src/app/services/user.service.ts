@@ -15,7 +15,7 @@ import { Profile } from '../models/profile.model';
 export class UserService {
   private router: Router;
   private httpService: HttpService;
-  private currentUser: User = new User();
+  private currentUser: User;
 
   private showHeaderOptionsSubject = new BehaviorSubject<boolean>(false);
   public showHeaderOptionsObservable = this.showHeaderOptionsSubject.asObservable();

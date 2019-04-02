@@ -13,7 +13,6 @@ import { UserModalComponent } from "../user-modal/user-modal.component";
 export class DashboardComponent implements OnInit {
   public parkings = [];
   public showModal = false;
-
   private userSevice: UserService;
 
   constructor(private dashboardService: DashboardService, userService: UserService, public dialog: MatDialog) {
@@ -25,6 +24,7 @@ export class DashboardComponent implements OnInit {
       this.parkings = data;
     });
 
+    console.log('dashbord', this.userSevice.getUser());
     this.userSevice.setMenuState(true);
   }
 

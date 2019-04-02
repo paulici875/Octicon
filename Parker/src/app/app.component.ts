@@ -16,22 +16,27 @@ export class AppComponent implements OnInit {
 
   public showIcons = false;
 
-  constructor(router: Router, userService: UserService, localStorageService: LocalStorageService) {
+  constructor(
+    router: Router,
+    userService: UserService,
+    localStorageService: LocalStorageService
+  ) {
     this.router = router;
     this.userService = userService;
     this.localStorageService = localStorageService;
-
   }
 
   ngOnInit(): void {
-    this.userService.showHeaderOptionsObservable.subscribe((state) => {
-      this.showIcons = state;
+    this.userService.showHeaderOptionsObservable.subscribe((state: boolean) => {
+      setTimeout(() => {
+        this.showIcons = state;
+      });
     });
   }
 
   public logOut() {
-      this.localStorageService.clearStorage();
-      this.userService.setMenuState(false);
-      this.router.navigate(['/login']);
+    this.localStorageService.clearStorage();
+    this.userService.setMenuState(false);
+    this.router.navigate(['/login']);
   }
 }
