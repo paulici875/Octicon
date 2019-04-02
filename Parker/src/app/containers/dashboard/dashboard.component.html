@@ -1,6 +1,10 @@
 <div class="card-container">
-    <div *ngFor="let parking of parkings">
-      <card [address]="parking.address" [emptySpotsCount]="parking.emptySpotsCount"></card>
-    </div>
-    <!-- <modal [show]="showModal"></modal> -->
+  <div *ngFor="let parking of parkings">
+    <card
+      [address]="parking.address"
+      [emptySpotsCount]="parking.emptySpotsCount"
+      (openReservationModal)="onOpenReservationModal($event)"
+    ></card>
+  </div>
+  <!-- <modal [show]="showModal"></modal> -->
 </div>
