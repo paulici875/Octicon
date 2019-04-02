@@ -41,7 +41,6 @@ const appRoutes: Routes = [
     component: LoginComponent
   },
   {
-<<<<<<< HEAD
     path: 'profile',
     component: ProfileComponent,
     canActivate: [AuthGuard]
