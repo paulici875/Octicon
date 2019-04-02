@@ -9,6 +9,7 @@ import { HttpService } from '../shared/services/http.service';
 // Models
 import { User } from '../models/user.model';
 import { Password } from '../models/password.model';
+import { Profile } from '../models/profile.model';
 
 @Injectable()
 export class UserService {
@@ -54,12 +55,18 @@ export class UserService {
     return this.currentUser;
   }
 
+  public updateProfile(profile: Profile): Observable<any>{
+    const observable: Observable<any> = this.httpService
+      .post('/user/profile/edit', profile)
+      .pipe(share());
+    return observable;
+  }
+
   public setUser(user: User): void {
     this.currentUser = user;
   }
 
   public setPassword(newPass: Password): Observable<any>{
-    newPass.userId = localStorage.getItem('id');
     const observable: Observable<any> = this.httpService
       .post('/change-password', newPass)
       .pipe(share());

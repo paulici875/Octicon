@@ -22,55 +22,71 @@
     </div>
   </div>
   <div class="edit-container">
-    <form [formGroup]="detailsForm">
+    <form [formGroup]="detailsForm" autocomplete="off" novalidate (ngSubmit)="updateProfile(detailsForm.value)"
+      fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="10px">
       <div class="form-title">
-        <span>Informații de bază</span>
+        <mat-card-title>Informatii de baza</mat-card-title>
         <div class="form-buttons">
-          <button type="cancel" (click)="clearDetailsForm()" class="cancel-button button">Anulează</button>
-          <button type="submit" (click)="onDetailsSubmit()" class="save-button button">Salvează</button>
+          <mat-card-actions>
+            <button mat-raised-button color="primary" [disabled]="!detailsForm.valid">Update</button>
+            <button type="button" mat-raised-button color="warn" (click)="cancelDetailsForm()">Cancel</button>
+          </mat-card-actions>
         </div>
       </div>
-      <div class="form-body">
-        <div class="name-details">
-          <div class="form-input" style="width: 50%">
-            <span>Nume</span>
-            <input type="text" name="lastName"  formControlName="lastName" placeholder="Nume" [value]="currentUser.lastName">
-          </div>
-          <div class="form-input" style="width: 50%">
-            <span>Prenume</span>
-            <input type="text" name="firstName" formControlName="firstName" placeholder="Prenume" [value]="currentUser.firstName" />
-          </div>
-        </div>
-        <div class="form-input">
-          <span>Email</span>
-          <input type="email" name="email" formControlName="email" placeholder="email@email.com" [value]="currentUser.email" />
-        </div>
-        <div class="form-input">
-          <span>Telefon</span>
-          <input type="text" name="phone" formControlName="phone" placeholder="Telefon" [value]="currentUser.phone"/>
-        </div>
-      </div>
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width">
+              <input matInput type="text" placeholder="First name" formControlName="firstName" id="firstName">
+              <mat-error *ngIf="detailHasError('firstName', 'required')">First name is required</mat-error>
+              <mat-error *ngIf="detailHasError('firstName', 'maxlength')">You have more than 20 characters</mat-error>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="example-full-width">
+              <input matInput type="text" placeholder="Last name" formControlName="lastName" id="lastName">
+              <mat-error *ngIf="detailHasError('lastName', 'required')">Last name is required</mat-error>
+              <mat-error *ngIf="detailHasError('lastName', 'maxlength')">You have more than 20 characters</mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+      <mat-form-field class="example-full-width">
+        <input matInput type="email" placeholder="Email" formControlName="email" id="email">
+        <mat-error *ngIf="detailHasError('email', 'required')">Email is required</mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input matInput type="text" placeholder="Phone" formControlName="phone" id="phone">
+        <mat-error *ngIf="detailHasError('phone', 'required')">Phone is required</mat-error>
+      </mat-form-field>
     </form>
-    <form [formGroup]="passwordForm">
-        <div class="form-title">
-          <span>Securitate</span>
-          <div class="form-buttons">
-            <button type="cancel" (click)="clearPasswordForm()" class="cancel-button button">Anulează</button>
-            <button type="submit" (click)="onPasswordSubmit()" class="save-button button">Salvează</button>
-          </div>
+    <form [formGroup]="passwordForm" autocomplete="off" novalidate (ngSubmit)="updatePassword(passwordForm.value)"
+      fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="10px">
+      <div class="form-title">
+        <mat-card-title>Securitate</mat-card-title>
+        <div class="form-buttons">
+          <mat-card-actions>
+            <button mat-raised-button color="primary" [disabled]="!passwordForm.valid">Update</button>
+            <button type="button" mat-raised-button color="warn" (click)="cancelPasswordForm()">Cancel</button>
+          </mat-card-actions>
         </div>
-        <div class="form-body">
-          <div class="name-details">
-            <div class="form-input" style="width: 50%">
-              <span>Old password</span>
-              <input type="password" name="oldPassword" formControlName="oldPassword" placeholder="Old password" />
-            </div>
-            <div class="form-input" style="width: 50%">
-              <span>New password</span>
-              <input type="password" name="newPassword" formControlName="newPassword" placeholder="New password" />
-            </div>
-          </div>
-        </div>
-      </form>
+      </div>
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width">
+              <input matInput type="password" placeholder="Old password" formControlName="oldPassword" id="oldPassword">
+              <mat-error *ngIf="passwordHasError('oldPassword', 'required')">Is required</mat-error>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="example-full-width">
+              <input matInput type="password" placeholder="New password" formControlName="newPassword" id="newPassword">
+              <mat-error *ngIf="passwordHasError('newPassword', 'required')">Is required</mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+    </form>
   </div>
 </div>

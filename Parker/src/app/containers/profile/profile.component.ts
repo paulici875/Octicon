@@ -5,7 +5,7 @@ import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { Password } from 'src/app/models/password.model';
 import { LocalStorageService } from '../../services/local-storage.service';
 import { Router } from '@angular/router';
-import { fdatasync } from 'fs';
+import { Profile } from '../../models/profile.model';
 
 
 @Component({
@@ -17,22 +17,22 @@ import { fdatasync } from 'fs';
 export class ProfileComponent implements OnInit {
   private router: Router;
   private localStorageService: LocalStorageService;
-
   private userService: UserService;
   public currentUser: User = new User();
   public detailsForm: FormGroup;
   public numberOfActiveReservations: boolean = false;
   public passwordForm: FormGroup;
+
   constructor(router: Router, userService: UserService, localStorageService: LocalStorageService) {
     this.userService = userService;
     this.router = router;
     this.localStorageService = localStorageService;
     this.detailsForm = new FormGroup({
-      lastName: new FormControl(this.currentUser ? this.currentUser.lastName : '', {validators: [Validators.required], updateOn: 'submit'}),
-      firstName: new FormControl(this.currentUser ? this.currentUser.firstName : '', {validators: [Validators.required], updateOn: 'submit'}),
-      email: new FormControl(this.currentUser ? this.currentUser.email: '', {validators: [Validators.required], updateOn: 'submit'}),
-      phone: new FormControl(this.currentUser ? this.currentUser.phone: '', {validators: [Validators.required], updateOn: 'submit'})
-  });
+      firstName: new FormControl('',[Validators.required, Validators.maxLength(20)]),
+      lastName: new FormControl('',[Validators.required, Validators.maxLength(20)]),
+      email: new FormControl('',[Validators.required, Validators.email]),
+      phone: new FormControl('', [Validators.required, Validators.pattern(this.phoneRegex)])
+    })
   this.passwordForm = new FormGroup({
     oldPassword: new FormControl('', [Validators.required]),
     newPassword: new FormControl('', [Validators.required])
@@ -45,14 +45,21 @@ export class ProfileComponent implements OnInit {
       if(data.numberOfActiveReservations === 1){
         this.numberOfActiveReservations = true;
       }
-
       this.currentUser = data;
       this.updateValues();
     });
   }
 
+  cancelDetailsForm(): void{
+    this.updateValues();
+  }
+
+  cancelPasswordForm(): void{
+    this.passwordForm.reset();
+  }
+
   updateValues(): void{
-    this.detailsForm.setValue({
+    this.detailsForm.patchValue({
       lastName: this.currentUser.lastName,
       firstName: this.currentUser.firstName,
       phone: this.currentUser.phone,
@@ -60,36 +67,36 @@ export class ProfileComponent implements OnInit {
     })
   }
 
-  onDetailsSubmit(): void {
-    this.currentUser.firstName = this.detailsForm.get('firstName').value;
-    this.currentUser.lastName = this.detailsForm.get('lastName').value;
-    this.currentUser.email = this.detailsForm.get('email').value;
-    this.currentUser.phone = this.detailsForm.get('phone').value;
-
-    this.updateDetails();
+  updateDetails(): void{
+    this.userService.setUser(this.currentUser);
+  }
+  
+  public detailHasError = (controlName: string, errorName: string) =>{
+    return this.detailsForm.controls[controlName].hasError(errorName);
   }
 
-  onPasswordSubmit(): void{
+  public passwordHasError = (controlName: string, errorName: string) => {
+    return this.passwordForm.controls[controlName].hasError(errorName);
+  }
+
+  public updateProfile = (detailsFormValue) => {
+    if (this.detailsForm.valid) {
+      let profile = new Profile();
+      profile = {  userId: localStorage.getItem('id'), ...detailsFormValue };
+      this.userService.updateProfile(profile).subscribe(()=>{
+        window.location.reload();
+      })
+    }
+  }
+
+  public updatePassword(value): void{
     let newPass = new Password();
-    newPass.oldPassword = this.passwordForm.get('oldPassword').value,
-    newPass.newPassword = this.passwordForm.get('newPassword').value
+    newPass.oldPassword = value.oldPassword;
+    newPass.newPassword = value.newPassword;
     this.userService.setPassword(newPass).subscribe(() => {
       this.localStorageService.clearStorage();
       this.userService.setMenuState(false);
       this.router.navigate(['/login']);
     });
   }
-
-  clearDetailsForm(): void{
-    this.detailsForm.reset();
-  }
-
-  clearPasswordForm(): void{
-    this.passwordForm.reset();
-  }
-
-  updateDetails(): void{
-    this.userService.setUser(this.currentUser);
-  }
-  
 }

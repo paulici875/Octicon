@@ -16,44 +16,20 @@
       width: 70%;
       padding: 5px;
       padding-left: 20px;
+
+      .example-full-width {
+        width: 100%;
+      }
+
       .form-title{
         width: 100%;
         display: flex;
         padding: 10px;
         box-sizing: border-box;
         border-bottom: 1px solid #D7DBDD;
-        & > span{
-          color: #747474;
-          font-weight: 600;
-          font-size: 25px;
-          width: 60%;
-        }
         & > div{
-          width: 40%;
+          width: 60%;
           text-align: right;
-        }
-
-        .button{
-          border-radius: 8px;
-          outline: none;
-          text-decoration: none;
-          border: none;
-          padding: 5px;
-          margin-left: 10px;
-          width: 70px;
-          text-align: center;
-        }
-        .button:hover{
-          box-shadow: 0 2px 3px #747474;
-        }
-        .save-button{
-          color: #FEFEFE;
-          background-color: #4A88C5;
-        }
-        .cancel-button{
-          color: #747474;
-          border: 1px solid #4A88C5;
-          background-color: transparent;
         }
 
       }
@@ -119,7 +95,6 @@
           font-weight: 100;
         }
         & > span{
-          color: #949494;
           font-weight: 100;
           font-size: 20px;
         }
@@ -137,7 +112,6 @@
           justify-content: center;
           text-align: center;
           font-weight: 100;
-          color: #949494;
 
           & > span:first-child{
             font-size: 25px;
@@ -155,4 +129,10 @@
       
     }
   }
+}
+
+/*overwrite some angular material css*/
+.mat-card-title{
+  font-weight: 100;
+  width: 40%;
 }
