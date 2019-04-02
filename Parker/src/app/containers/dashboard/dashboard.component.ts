@@ -10,7 +10,6 @@ import { DashboardService } from '../../services/dashboard.service';
 export class DashboardComponent implements OnInit {
   public parkings = [];
   public showModal = false;
-
   private userSevice: UserService;
 
   constructor(private dashboardService: DashboardService, userService: UserService) {
@@ -21,6 +20,7 @@ export class DashboardComponent implements OnInit {
     this.dashboardService.getParkings().subscribe(data => {
       this.parkings = data;
     });
+    // this.userSevice.getCurrentUserType();
 
     this.userSevice.setMenuState(true);
   }

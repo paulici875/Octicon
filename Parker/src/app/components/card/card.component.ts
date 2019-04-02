@@ -11,10 +11,9 @@ import { Component, Input, HostListener, OnInit } from '@angular/core';
 export class CardComponent implements OnInit {
   @Input() address: string;
   @Input() emptySpotsCount: number;
+  @Input() currentUserType: string;
 
   private userService: UserService;
-
-  public currentUserType: string;
   public typeU = UserType;
 
   constructor(userService: UserService) {
@@ -22,9 +21,6 @@ export class CardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.currentUserType = this.userService.getCurrentUserType();
-    // console.log(this.currentUserType);
-
   }
 
 }

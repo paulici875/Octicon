@@ -25,7 +25,6 @@ export class HttpService {
     return this.httpClient.post(`${baseUrl}${url}`, data, {
       params,
       headers: {
-        // 'api': localStorage.getItem('userID') || ''
       }
     }
     );
@@ -34,7 +33,6 @@ export class HttpService {
   public delete(url: string): Observable<any> {
     return this.httpClient.delete(`${baseUrl}${url}`, {
       headers: {
-        // 'api': localStorage.getItem('userID') || ''
       }
     });
   }
@@ -42,7 +40,6 @@ export class HttpService {
   public put(url: string, data: any): Observable<any> {
     return this.httpClient.put(`${baseUrl}${url}`, data, {
       headers: {
-        // 'api': localStorage.getItem('userID') || ''
       }
     });
   }

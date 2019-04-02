@@ -1,6 +1,6 @@
 <div class="card-container">
     <div *ngFor="let parking of parkings">
-      <card [address]="parking.address" [emptySpotsCount]="parking.emptySpotsCount"></card>
+      <card [address]="parking.address" [emptySpotsCount]="parking.emptySpotsCount" [currentUserType]="'Admin'"></card>
     </div>
     <!-- <modal [show]="showModal"></modal> -->
 </div>
