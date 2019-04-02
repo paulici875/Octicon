@@ -18,12 +18,16 @@
     position: fixed;
   }
 
-  .header-logo {
+  .header-logo-link {
+    width: 160px;
     margin: 0 auto;
-    height: calc(100%- 10px);
+
+  }
+
+  .header-logo {
+    height: 50px;
     padding-top: 5px;
     padding-bottom: 5px;
-    width: 160px;
   }
 
   .panel {
@@ -51,6 +55,7 @@
   .header-options {
     display: flex;
   }
+
 
   .profile-logo {
     font-size: 16px;

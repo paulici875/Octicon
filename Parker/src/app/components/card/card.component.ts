@@ -10,20 +10,17 @@ import { Component, Input, HostListener, OnInit, Output, EventEmitter } from "@a
 export class CardComponent implements OnInit {
   @Input() address: string;
   @Input() emptySpotsCount: number;
+  @Input() currentUserType: string;
   @Output() openReservationModal = new EventEmitter();
-  private userService: UserService;
 
-  public currentUserType: string;
+  private userService: UserService;
   public typeU = UserType;
 
   constructor(userService: UserService) {
     this.userService = userService;
   }
 
-  ngOnInit(): void {
-    this.currentUserType = this.userService.getCurrentUserType();
-    // console.log(this.currentUserType);
-  }
+  ngOnInit(): void {}
 
   onOpenReservationModal(event) {
     this.openReservationModal.emit(event);

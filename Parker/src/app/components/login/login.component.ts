@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
     this.validateSubscription = this.userService
       .login(this.newUser)
       .subscribe((userRecived: BackEndUser) => {
-        if (userRecived) {
+        if (userRecived.userId !== null) {
           const id = String(userRecived.userId);
           this.userService.getUserProfile(userRecived.userId).subscribe((finalUser: User) => {
             this.userService.setUser(finalUser);
