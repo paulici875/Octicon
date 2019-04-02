@@ -22,7 +22,6 @@ export class CardComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUserType = this.userService.getCurrentUserType();
-    // console.log(this.currentUserType);
   }
 
   onOpenReservationModal(event) {

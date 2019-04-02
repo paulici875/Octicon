@@ -31,7 +31,7 @@ export class ProfileComponent implements OnInit {
       firstName: new FormControl('',[Validators.required, Validators.maxLength(20)]),
       lastName: new FormControl('',[Validators.required, Validators.maxLength(20)]),
       email: new FormControl('',[Validators.required, Validators.email]),
-      phone: new FormControl('', [Validators.required, Validators.pattern(this.phoneRegex)])
+      phone: new FormControl('', [Validators.required])
     })
   this.passwordForm = new FormGroup({
     oldPassword: new FormControl('', [Validators.required]),

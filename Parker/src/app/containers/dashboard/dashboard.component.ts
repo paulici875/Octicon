@@ -24,7 +24,6 @@ export class DashboardComponent implements OnInit {
       this.parkings = data;
     });
 
-    console.log('dashbord', this.userSevice.getUser());
     this.userSevice.setMenuState(true);
   }
 
