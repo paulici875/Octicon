@@ -44,10 +44,6 @@ const appRoutes: Routes = [
     path: 'profile',
     component: ProfileComponent,
     canActivate: [AuthGuard]
-=======
-    path: "profile",
-    component: ProfileComponent
->>>>>>> origin/rezervari-modale
   },
   {
     path: "**",
