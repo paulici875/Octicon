@@ -6,13 +6,14 @@ import {
   ActivatedRouteSnapshot,
   RouterStateSnapshot
 } from '@angular/router';
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
 
 // Services
 import { UserService } from './user.service';
 
 // Models
 import { User } from '../models/user.model';
+import { log } from 'util';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -37,7 +38,17 @@ export class AuthGuard implements CanActivate {
       this.router.navigate(['/login']);
       return false;
     } else {
+      if (!this.user) {
+        const subject: Subject<boolean> = new Subject<boolean>();
+        const obs: Observable<boolean> = subject.asObservable();
+        this.userService.getUserProfile(this.localStorageService.getLocalStorageId()).subscribe((data: User) => {
+          this.userService.setUser(data);
+          subject.next(true);
+        });
+        return obs;
+      } else {
       return true;
+      }
     }
   }
 }

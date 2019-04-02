@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user.model';
 import { UserService } from 'src/app/services/user.service';
+import { log } from 'util';
 
 @Component({
   selector: 'profile',
@@ -16,8 +17,12 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.getUserProfile(localStorage.id).subscribe((data)=> {
-      this.currentUser = data;
-    });
+   this.currentUser = this.userService.getUser();
+  }
+
+
+
+  public saveInfo() {
+    console.log(this.currentUser);
   }
 }

@@ -20,8 +20,8 @@ export class DashboardComponent implements OnInit {
     this.dashboardService.getParkings().subscribe(data => {
       this.parkings = data;
     });
-    // this.userSevice.getCurrentUserType();
 
+    console.log('dashbord', this.userSevice.getUser());
     this.userSevice.setMenuState(true);
   }
 }
