@@ -4,6 +4,7 @@ import { DashboardService } from "../../services/dashboard.service";
 import { MatDialog } from "@angular/material";
 import { AdminModalComponent } from "../admin-modal/admin-modal.component";
 import { UserModalComponent } from "../user-modal/user-modal.component";
+import { Router } from '@angular/router';
 
 @Component({
   selector: "dashboard",
@@ -12,11 +13,13 @@ import { UserModalComponent } from "../user-modal/user-modal.component";
 })
 export class DashboardComponent implements OnInit {
   public parkings = [];
+  private router: Router;
   public showModal = false;
   private userSevice: UserService;
 
-  constructor(private dashboardService: DashboardService, userService: UserService, public dialog: MatDialog) {
+  constructor(router: Router, private dashboardService: DashboardService, userService: UserService, public dialog: MatDialog, ) {
     this.userSevice = userService;
+    this.router = router;
   }
 
   ngOnInit() {
@@ -38,7 +41,7 @@ export class DashboardComponent implements OnInit {
         })
         .afterClosed()
         .subscribe(result => {
-          console.log(result);
+          this.router.navigate(['/'+result]);
         });
     } else {
       const dialogUserRef = this.dialog

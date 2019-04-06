@@ -29,6 +29,7 @@ import { AuthGuard } from "./services/auth.guard";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MaterialModule } from "./material.module";
 import { UserModalComponent } from "./containers/user-modal/user-modal.component";
+import { ProfitComponent } from './containers/profit/profit.component';
 
 const appRoutes: Routes = [
   {
@@ -43,6 +44,11 @@ const appRoutes: Routes = [
   {
     path: 'profile',
     component: ProfileComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'profit',
+    component: ProfitComponent,
     canActivate: [AuthGuard]
   },
   {
@@ -62,7 +68,8 @@ const appRoutes: Routes = [
     BackdropComponent,
     ProfileComponent,
     AdminModalComponent,
-    UserModalComponent
+    UserModalComponent,
+    ProfitComponent
   ],
   imports: [
     MaterialModule,
