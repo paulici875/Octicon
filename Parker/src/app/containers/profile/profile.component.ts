@@ -7,42 +7,49 @@ import { LocalStorageService } from '../../services/local-storage.service';
 import { Router } from '@angular/router';
 import { Profile } from '../../models/profile.model';
 
-
 @Component({
   selector: 'profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })
-
 export class ProfileComponent implements OnInit {
   private router: Router;
   private localStorageService: LocalStorageService;
   private userService: UserService;
   public currentUser: User = new User();
   public detailsForm: FormGroup;
-  public numberOfActiveReservations: boolean = false;
+  public numberOfActiveReservations = false;
   public passwordForm: FormGroup;
 
-  constructor(router: Router, userService: UserService, localStorageService: LocalStorageService) {
+  constructor(
+    router: Router,
+    userService: UserService,
+    localStorageService: LocalStorageService
+  ) {
     this.userService = userService;
     this.router = router;
     this.localStorageService = localStorageService;
     this.detailsForm = new FormGroup({
-      firstName: new FormControl('',[Validators.required, Validators.maxLength(20)]),
-      lastName: new FormControl('',[Validators.required, Validators.maxLength(20)]),
-      email: new FormControl('',[Validators.required, Validators.email]),
+      firstName: new FormControl('', [
+        Validators.required,
+        Validators.maxLength(20)
+      ]),
+      lastName: new FormControl('', [
+        Validators.required,
+        Validators.maxLength(20)
+      ]),
+      email: new FormControl('', [Validators.required, Validators.email]),
       phone: new FormControl('', [Validators.required])
-    })
-  this.passwordForm = new FormGroup({
-    oldPassword: new FormControl('', [Validators.required]),
-    newPassword: new FormControl('', [Validators.required])
-  })
-}
-
+    });
+    this.passwordForm = new FormGroup({
+      oldPassword: new FormControl('', [Validators.required]),
+      newPassword: new FormControl('', [Validators.required])
+    });
+  }
 
   ngOnInit() {
-    this.userService.getUserProfile(localStorage.id).subscribe((data)=> {
-      if(data.numberOfActiveReservations === 1){
+    this.userService.getUserProfile(localStorage.id).subscribe(data => {
+      if (data.numberOfActiveReservations === 1) {
         this.numberOfActiveReservations = true;
       }
       this.currentUser = data;
@@ -50,47 +57,47 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  cancelDetailsForm(): void{
+  cancelDetailsForm(): void {
     this.updateValues();
   }
 
-  cancelPasswordForm(): void{
+  cancelPasswordForm(): void {
     this.passwordForm.reset();
   }
 
-  updateValues(): void{
+  updateValues(): void {
     this.detailsForm.patchValue({
       lastName: this.currentUser.lastName,
       firstName: this.currentUser.firstName,
       phone: this.currentUser.phone,
       email: this.currentUser.email
-    })
+    });
   }
 
-  updateDetails(): void{
+  updateDetails(): void {
     this.userService.setUser(this.currentUser);
   }
-  
-  public detailHasError = (controlName: string, errorName: string) =>{
+
+  public detailHasError = (controlName: string, errorName: string) => {
     return this.detailsForm.controls[controlName].hasError(errorName);
-  }
+  };
 
   public passwordHasError = (controlName: string, errorName: string) => {
     return this.passwordForm.controls[controlName].hasError(errorName);
-  }
+  };
 
-  public updateProfile = (detailsFormValue) => {
+  public updateProfile = detailsFormValue => {
     if (this.detailsForm.valid) {
       let profile = new Profile();
-      profile = {  userId: localStorage.getItem('id'), ...detailsFormValue };
-      this.userService.updateProfile(profile).subscribe(()=>{
+      profile = { userId: localStorage.getItem('id'), ...detailsFormValue };
+      this.userService.updateProfile(profile).subscribe(() => {
         window.location.reload();
-      })
+      });
     }
-  }
+  };
 
-  public updatePassword(value): void{
-    let newPass = new Password();
+  public updatePassword(value): void {
+    const newPass = new Password();
     newPass.oldPassword = value.oldPassword;
     newPass.newPassword = value.newPassword;
     this.userService.setPassword(newPass).subscribe(() => {

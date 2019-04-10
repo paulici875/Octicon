@@ -29,6 +29,13 @@ import { AuthGuard } from './services/auth.guard';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { UserModalComponent } from './containers/user-modal/user-modal.component';
+import { FastChargingParkingComponent } from './containers/fast-charging-parking/fast-charging-parking.component';
+import { FastChargingParkingFormComponent } from './components/fast-charging-parking-form/fast-charging-parking-form.component';
+import { NormalChargingParkingComponent } from './containers/normal-charging-parking/normal-charging-parking.component';
+import { NormalChargingParkingFormComponent } from './components/normal-charging-parking-form/normal-charging-parking-form.component';
+import { ReservationsModalComponent } from './containers/reservations-modal/reservations-modal.component';
+import { ProfitModalComponent } from './containers/profit-modal/profit-modal.component';
+import { UpdateParkingModalComponent } from './containers/update-parking-modal/update-parking-modal.component';
 
 const appRoutes: Routes = [
   {
@@ -62,7 +69,14 @@ const appRoutes: Routes = [
     BackdropComponent,
     ProfileComponent,
     AdminModalComponent,
-    UserModalComponent
+    UserModalComponent,
+    NormalChargingParkingComponent,
+    NormalChargingParkingFormComponent,
+    FastChargingParkingComponent,
+    FastChargingParkingFormComponent,
+    ReservationsModalComponent,
+    ProfitModalComponent,
+    UpdateParkingModalComponent
   ],
   imports: [
     MaterialModule,
@@ -74,7 +88,15 @@ const appRoutes: Routes = [
     AppRoutingModule,
     RouterModule.forRoot(appRoutes)
   ],
-  entryComponents: [AdminModalComponent, UserModalComponent],
+  entryComponents: [
+    AdminModalComponent,
+    UserModalComponent,
+    NormalChargingParkingComponent,
+    FastChargingParkingComponent,
+    ReservationsModalComponent,
+    ProfitModalComponent,
+    UpdateParkingModalComponent
+  ],
   providers: [
     UserService,
     HttpService,

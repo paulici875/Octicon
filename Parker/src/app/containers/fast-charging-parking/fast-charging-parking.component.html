@@ -1,0 +1,15 @@
+<h3 class="mat-dialog-title" fxLayout="row" fxLayoutAlign="center center">
+  <span fxLayout="row" fxLayoutAlign="center center" style="text-align: center; flex: 1"
+    ><img width="40px" height="40px" src="assets/images/reservation-icon.png" />Rezervare statie
+    fast-charging</span
+  >
+  <div style="cursor: pointer;">
+    <img (click)="onClose()" width="40px" height="40px" src="assets/images/close-icon.png" />
+  </div>
+</h3>
+<div class="mat-dialog-content content" fxFill>
+  <app-fast-charging-parking-form
+    [availableParkings]="0"
+    (submit)="onSubmit($event)"
+  ></app-fast-charging-parking-form>
+</div>

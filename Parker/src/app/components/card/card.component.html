@@ -8,14 +8,7 @@
   <div class="card-footer">
     <buttoncmp
       image="../assets/icons/parking-lot-icon.png"
-      text="Rezervă"
-      *ngIf="currentUserType == typeU.CLIENT"
-      (click)="onOpenReservationModal(currentUserType)"
-    ></buttoncmp>
-    <buttoncmp
-      image="../assets/icons/parking-lot-icon.png"
-      text="Detalii"
-      *ngIf="currentUserType == typeU.ADMIN"
+      [text]="currentUserType === 'Admin' ? 'Detalii' : 'Rezerva'"
       (click)="onOpenReservationModal(currentUserType)"
     ></buttoncmp>
   </div>
