@@ -36,6 +36,7 @@ import { NormalChargingParkingFormComponent } from './components/normal-charging
 import { ReservationsModalComponent } from './containers/reservations-modal/reservations-modal.component';
 import { ProfitModalComponent } from './containers/profit-modal/profit-modal.component';
 import { UpdateParkingModalComponent } from './containers/update-parking-modal/update-parking-modal.component';
+import { ProfitComponent } from './containers/profit/profit.component';
 
 const appRoutes: Routes = [
   {
@@ -76,7 +77,8 @@ const appRoutes: Routes = [
     FastChargingParkingFormComponent,
     ReservationsModalComponent,
     ProfitModalComponent,
-    UpdateParkingModalComponent
+    UpdateParkingModalComponent,
+    ProfitComponent
   ],
   imports: [
     MaterialModule,

@@ -10,6 +10,7 @@ import { ReservationsModalComponent } from '../reservations-modal/reservations-m
 import { ProfitModalComponent } from '../profit-modal/profit-modal.component';
 import { UpdateParkingModalComponent } from '../update-parking-modal/update-parking-modal.component';
 import { UserType } from 'src/app/models/type.enums';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'dashboard',
@@ -18,6 +19,7 @@ import { UserType } from 'src/app/models/type.enums';
 })
 export class DashboardComponent implements OnInit {
   public parkings = [];
+  private router: Router;
   public showModal = false;
   public userType: string;
   private userSevice: UserService;
@@ -25,9 +27,11 @@ export class DashboardComponent implements OnInit {
   constructor(
     private dashboardService: DashboardService,
     userService: UserService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    router: Router
   ) {
     this.userSevice = userService;
+    this.router = router;
   }
 
   ngOnInit() {
@@ -41,7 +45,7 @@ export class DashboardComponent implements OnInit {
 
   openModal(modal, minWidth = '500px') {
     return this.dialog.open(modal, {
-      minWidth: minWidth,
+      minWidth,
       autoFocus: false,
       panelClass: 'modal'
     });
@@ -79,7 +83,7 @@ export class DashboardComponent implements OnInit {
         if (result === 'electricalParking') {
           this.openModal(FastChargingParkingComponent)
             .afterClosed()
-            .subscribe(result => {
+            .subscribe((result: any) => {
               if (result === 'close') {
                 this.openUserModal();
               }

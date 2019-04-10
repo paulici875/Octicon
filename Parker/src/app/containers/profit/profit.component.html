@@ -1,0 +1,14 @@
+<div style="display: flex; justify-content: center; align-items: center; flex-direction: column">
+    <h1 style="text-align: center">Profit luna {{month}}</h1>
+    <mat-form-field>
+            <input matInput [matDatepicker]="dp" placeholder="An si luna" [formControl]="date">
+            <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+            <mat-datepicker #dp
+                            startView="multi-year"
+                            (yearSelected)="chosenYearHandler($event)"
+                            (monthSelected)="chosenMonthHandler($event, dp)"
+                            panelClass="example-month-picker">
+            </mat-datepicker>
+          </mat-form-field>
+    <div id="chartContainer" style="height: 370px; width: 50%; margin: 0 auto;"></div>
+</div>
