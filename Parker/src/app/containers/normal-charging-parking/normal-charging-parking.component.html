@@ -15,7 +15,9 @@
 </h3>
 <div class="mat-dialog-content content" fxFill>
   <app-normal-charging-parking-form
-    [availableParkings]="0"
+    [availableParkings]="parking?.emptySpotsCount"
+    [parking]="parking"
+    [parkingType]="parkingType"
     (submit)="onSubmit($event)"
   ></app-normal-charging-parking-form>
 </div>

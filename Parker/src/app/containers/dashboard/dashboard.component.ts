@@ -1,7 +1,7 @@
 import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { DashboardService } from '../../services/dashboard.service';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatDialogConfig } from '@angular/material';
 import { AdminModalComponent } from '../admin-modal/admin-modal.component';
 import { UserModalComponent } from '../user-modal/user-modal.component';
 import { FastChargingParkingComponent } from '../fast-charging-parking/fast-charging-parking.component';
@@ -43,11 +43,15 @@ export class DashboardComponent implements OnInit {
     this.userSevice.setMenuState(true);
   }
 
-  openModal(modal, minWidth = '500px') {
+  openModal(modal,dataRecived?, type?, minWidth = '500px') {
     return this.dialog.open(modal, {
       minWidth,
       autoFocus: false,
-      panelClass: 'modal'
+      panelClass: 'modal',
+      data: {
+        item: dataRecived,
+        typeModal: type
+      }
     });
   }
 
@@ -67,36 +71,36 @@ export class DashboardComponent implements OnInit {
       });
   }
 
-  openUserModal() {
+  openUserModal(data) {
     this.openModal(UserModalComponent)
       .afterClosed()
       .subscribe(result => {
-        if (result === 'normalParking') {
-          this.openModal(NormalChargingParkingComponent)
-            .afterClosed()
-            .subscribe(result => {
-              if (result === 'close') {
-                this.openUserModal();
-              }
-            });
-        }
-        if (result === 'electricalParking') {
-          this.openModal(FastChargingParkingComponent)
-            .afterClosed()
-            .subscribe((result: any) => {
-              if (result === 'close') {
-                this.openUserModal();
-              }
-            });
-        }
+        // if (result === 'normalParking') {
+        this.openModal(NormalChargingParkingComponent, data , result)
+          .afterClosed()
+          .subscribe(result => {
+            if (result === 'close') {
+              this.openUserModal(data);
+            }
+        });
+        // }
+        // if (result === 'electricalParking') {
+        //   this.openModal(FastChargingParkingComponent, data)
+        //     .afterClosed()
+        //     .subscribe((result: any) => {
+        //       if (result === 'close') {
+        //         this.openUserModal(data);
+        //       }
+        //     });
+        // }
       });
   }
 
-  onOpenReservationModal(event) {
+  onOpenReservationModal(event, parking) {
     if (event === UserType.ADMIN) {
       this.openAdminModal();
     } else {
-      this.openUserModal();
+      this.openUserModal(parking);
     }
   }
 }

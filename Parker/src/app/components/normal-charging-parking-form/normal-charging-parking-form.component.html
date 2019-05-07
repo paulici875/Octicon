@@ -5,13 +5,9 @@
     fxLayoutAlign="start center"
     [formGroup]="form"
   >
-    <span>Locuri disponibile {{ availableParkings }}</span>
+  <span>Locuri disponibile {{ availableParkings }}</span>
     <mat-form-field class="full-width">
-      <input type="text" matInput placeholder="Telefon" formControlName="phone" />
-      <mat-error *ngIf="phone.hasError('required')">Camp obligatoriu</mat-error>
-    </mat-form-field>
-    <mat-form-field class="full-width">
-      <input type="text" matInput placeholder="Adresa" formControlName="address" />
+      <input type="text" matInput placeholder="Nr imatriculare" formControlName="address" />
       <mat-error *ngIf="address.hasError('required')">Camp obligatoriu</mat-error>
     </mat-form-field>
     <mat-form-field class="full-width">
@@ -31,8 +27,10 @@
     </mat-form-field>
     <div fxFill>
       <mat-radio-group formControlName="frequency" fxLayoutAlign="space-around center" class="full-width">
-        <mat-radio-button value="oneTime">O singura data</mat-radio-button>
-        <mat-radio-button value="daily">Zilnic</mat-radio-button>
+        <mat-radio-button value="OneTime">O singura data</mat-radio-button>
+        <mat-radio-button value="Daily">Zilnic</mat-radio-button>
+        <mat-radio-button value="Monthly">O data pe luna</mat-radio-button>
+        <mat-radio-button value="Weekly">O data pe saptamana</mat-radio-button>
       </mat-radio-group>
     </div>
   </form>

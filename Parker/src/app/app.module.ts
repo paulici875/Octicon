@@ -1,3 +1,4 @@
+import { ParkingService } from './services/parking.service';
 // Services
 import { UserService } from './services/user.service';
 import { HttpService } from './shared/services/http.service';
@@ -104,7 +105,8 @@ const appRoutes: Routes = [
     HttpService,
     DashboardService,
     AuthGuard,
-    LocalStorageService
+    LocalStorageService,
+    ParkingService
   ],
   bootstrap: [AppComponent]
 })
