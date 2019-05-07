@@ -55,6 +55,10 @@ export class UserService {
     return this.currentUser;
   }
 
+  public getUserId(): string {
+    return this.currentUser.id;
+  }
+
   public updateProfile(profile: Profile): Observable<any>{
     const observable: Observable<any> = this.httpService
       .post('/user/profile/edit', profile)

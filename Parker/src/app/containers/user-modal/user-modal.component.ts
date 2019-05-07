@@ -13,8 +13,7 @@ export class UserModalComponent implements OnInit {
   onSelectOption(option) {
     this.dialogRef.close(option);
   }
-
-  onClose(){
+  onClose() {
     this.dialogRef.close();
   }
 }
