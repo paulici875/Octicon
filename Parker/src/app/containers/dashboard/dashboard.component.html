@@ -3,7 +3,9 @@
     <card
       [address]="parking.address"
       [emptySpotsCount]="parking.emptySpotsCount"
+      [reservedSpotsCount]="parking.reservedSpotsCount"
       [currentUserType]="userType"
+      [isOpen]="parking.isOpen"
       (openReservationModal)="onOpenReservationModal($event, parking)"
     ></card>
   </div>
