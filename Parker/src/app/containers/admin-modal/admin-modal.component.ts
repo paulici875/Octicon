@@ -16,4 +16,7 @@ export class AdminModalComponent implements OnInit {
   selectOption(option) {
     this.dialogRef.close(option);
   }
+  goToProfit(){
+    window.location.assign('http://localhost:4200/profit');
+  }
 }
