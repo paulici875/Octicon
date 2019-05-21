@@ -1,3 +1,15 @@
-<p>
-  update-parking-modal works!
-</p>
+<div class="parking-wrapper">
+  <div class="parking-title">ON/OFF PARKING</div>
+    <mat-slide-toggle
+    [(ngModel)]="checked"
+    class="example-margin"
+    color="primary"
+    (change)="toggle()">
+</mat-slide-toggle>
+  <!-- <div>
+    <label class="switch">
+      <input type="checkbox" (click)="toggle($event)">
+      <span class="slider round"></span>
+    </label>
+  </div> -->
+</div>

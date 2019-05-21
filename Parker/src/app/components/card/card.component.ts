@@ -17,7 +17,9 @@ import {
 export class CardComponent implements OnInit {
   @Input() address: string;
   @Input() emptySpotsCount: number;
+  @Input() reservedSpotsCount: number;
   @Input() currentUserType: string;
+  @Input() isOpen: boolean;
   @Output() openReservationModal = new EventEmitter();
 
   private userService: UserService;
@@ -28,7 +30,9 @@ export class CardComponent implements OnInit {
     this.userService = userService;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+  }
 
   onOpenReservationModal(event) {
     this.openReservationModal.emit(event);

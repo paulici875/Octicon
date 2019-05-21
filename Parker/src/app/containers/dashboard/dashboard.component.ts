@@ -1,3 +1,4 @@
+import { ParkingService } from './../../services/parking.service';
 import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { DashboardService } from '../../services/dashboard.service';
@@ -28,7 +29,8 @@ export class DashboardComponent implements OnInit {
     private dashboardService: DashboardService,
     userService: UserService,
     public dialog: MatDialog,
-    router: Router
+    router: Router,
+    private parkingService: ParkingService
   ) {
     this.userSevice = userService;
     this.router = router;
@@ -41,6 +43,15 @@ export class DashboardComponent implements OnInit {
 
     this.userType = this.userSevice.getCurrentUserType();
     this.userSevice.setMenuState(true);
+
+    this.parkingService.checkObservable.subscribe((value) => {
+      for (const element of this.parkings) {
+        if (element.id === value.id) {
+            element.isOpen = value.isOpen;
+            console.log('dasda')
+        }
+      }
+    });
   }
 
   openModal(modal,dataRecived?, type?, minWidth = '500px') {
@@ -55,7 +66,7 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  openAdminModal() {
+  openAdminModal(data) {
     this.openModal(AdminModalComponent)
       .afterClosed()
       .subscribe(result => {
@@ -66,7 +77,7 @@ export class DashboardComponent implements OnInit {
           this.openModal(ProfitModalComponent);
         }
         if (result === 'update') {
-          this.openModal(UpdateParkingModalComponent);
+          this.openModal(UpdateParkingModalComponent, data);
         }
       });
   }
@@ -80,7 +91,7 @@ export class DashboardComponent implements OnInit {
           .afterClosed()
           .subscribe(result => {
             if (result === 'close') {
-              this.openUserModal(data);
+              // this.openUserModal(data);
             }
         });
         // }
@@ -98,7 +109,7 @@ export class DashboardComponent implements OnInit {
 
   onOpenReservationModal(event, parking) {
     if (event === UserType.ADMIN) {
-      this.openAdminModal();
+      this.openAdminModal(parking);
     } else {
       this.openUserModal(parking);
     }

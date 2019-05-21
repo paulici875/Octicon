@@ -2,5 +2,5 @@
   <div class="icon">
     <img  src="{{ image }}" />
   </div>
-  <button>{{ text }}</button>
+  <button [class.hover-blue]="userType === 'Admin' && !isOpen">{{ text }}</button>
 </div>

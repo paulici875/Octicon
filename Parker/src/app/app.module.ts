@@ -29,6 +29,7 @@ import { AuthGuard } from './services/auth.guard';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { UserModalComponent } from './containers/user-modal/user-modal.component';
 import { FastChargingParkingComponent } from './containers/fast-charging-parking/fast-charging-parking.component';
 import { FastChargingParkingFormComponent } from './components/fast-charging-parking-form/fast-charging-parking-form.component';
@@ -79,7 +80,7 @@ const appRoutes: Routes = [
     ReservationsModalComponent,
     ProfitModalComponent,
     UpdateParkingModalComponent,
-    ProfitComponent
+    ProfitComponent,
   ],
   imports: [
     MaterialModule,
@@ -89,6 +90,7 @@ const appRoutes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
+    MatButtonToggleModule,
     RouterModule.forRoot(appRoutes)
   ],
   entryComponents: [

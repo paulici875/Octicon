@@ -1,14 +1,24 @@
-<div class="card">
+<div class="card" [ngClass]="{'disable-card-client': !isOpen && currentUserType === 'Client' ,
+                              'disable-card-admin': !isOpen && currentUserType === 'Admin'}">
   <div class="card-header">
     {{ address }}
   </div>
-  <div class="card-body">
-    {{ emptySpotsCount }}
+  <div class="card-body" *ngIf ="currentUserType === 'Admin'">
+    <span class="red">{{ reservedSpotsCount }} </span>
+    /
+    <span>{{reservedSpotsCount + emptySpotsCount}} </span>
+  </div>
+  <div class="card-body"
+  *ngIf ="currentUserType === 'Client'"
+  >
+    <span>{{emptySpotsCount}}</span>
   </div>
   <div class="card-footer">
     <buttoncmp
       image="../assets/icons/parking-lot-icon.png"
       [text]="currentUserType === 'Admin' ? 'Detalii' : 'Rezerva'"
+      [userType]="currentUserType"
+      [isOpen]="isOpen"
       (click)="onOpenReservationModal(currentUserType)"
     ></buttoncmp>
   </div>

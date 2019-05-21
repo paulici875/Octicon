@@ -1,0 +1,38 @@
+.parking-wrapper {
+    display: flex;
+    justify-content: center;
+
+    .parking-button {
+      margin-top: 5px;
+      padding-right: 10px;
+    }
+
+    .parking-title {
+      padding-right: 10px;
+    }
+
+}
+
+.mat-slide-toggle-thumb {
+    width: 10px !important;
+    height: 10px !important;
+    transform: translate(50%, 50%);
+}
+
+.mat-slide-toggle-bar {
+  background-color: #000;
+  border-radius: 15px !important;
+  height: 16px !important;
+}
+
+.mat-slide-toggle-thumb-container {
+  top: -2px !important;
+}
+
+.mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+  background-color: #000;
+}
+
+.mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+  background-color: #fff;
+}

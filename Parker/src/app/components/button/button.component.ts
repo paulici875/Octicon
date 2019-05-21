@@ -8,4 +8,6 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 export class ButtonComponent {
   @Input() image: string;
   @Input() text: string;
+  @Input() userType: string;
+  @Input() isOpen: boolean;
 }
