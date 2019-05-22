@@ -4,7 +4,8 @@
   <div>
     <img width="40px" height="40px" src="assets/images/reservation-icon.png" />
   </div>
-  <span class="title-charge">Rezervare statie cu regim normal de incarcare</span>
+  <span class="title-charge" *ngIf="parkingType !== 'electricalParking'">Rezervare statie cu regim normal de incarcare</span>
+  <span class="title-charge" *ngIf="parkingType === 'electricalParking'">Rezerva statie cu regim rapid de incarcare</span>
   <div style="cursor: pointer;">
     <img
     (click)="onClose()"
